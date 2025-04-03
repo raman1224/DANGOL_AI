@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Website</title>
+   
+
+   
+
+
+     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> 
+</head>
+<body>
+
+    <!-- Top Social Media Bar -->
+   <!-- Top Bar -->
+<div class="topbar">
+    <!-- Left Side: Quick Links -->
+    <div class="topbar-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="disclaimer.html">Disclaimer</a>
+    </div>
+
+    <!-- Right Side: Social Icons + Login/Sign Up -->
+    <div class="topbar-right">
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@dangolyt" class="youtube" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100086140044240=ZbWKwL" class="facebook" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dangol1224/" class="linkedin" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/raman1224" class="github" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+        <!-- Login & Sign Up Buttons -->
+        <div class="auth-buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="signup.html" class="signup">signup</a>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome (for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+      
+        
+
+        <!-- Navbar with Search Box -->
+
+        <button id="theme-toggle">🌗 Toggle Mode</button>
+
+        <nav id="navbar">
+
+            <div class="hamburger" onclick="toggleDropdown()">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <!-- <div id="dropdownMe" class="dropdown-me">
+                 <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Andriod App</a></li>
+                    <li><a href="#">IOS App</a></li>
+                    <li><a href="#">Website</a></li>
+                    <li><a href="#">Dotnet App</a></li>
+                    <li><a href="#">Free Domain</a></li>
+                    <li><a href="#">Ecommerce Website</a></li>
+                </ul> 
+            </div> -->
+            <!-- <div class="hamburger" onclick="toggleDropdown()">
+                <i class="fas fa-bars"></i>
+            </div> -->
+            <div class="logo">DANGOL AI</div>
+            <!-- <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search questions...">
+                <button type="submit" onclick="searchGK()">🔍</button>
+            </div> -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search questions...">
+                <button id="voice-search"><i class="fas fa-microphone"></i></button>
+            </div>
+                    </nav>
+        
+
+       
+        
+        <!-- Dropdown Menu -->
+        <!-- <div id="dropdownMe" class="dropdown-me">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Social Media</a></li>
+                <li><a href="#">Entertainment</a></li>
+                <li><a href="#">General Knowledge</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Exam</a></li>
+            </ul>
+        </div> -->
+        
+ 
+
+
+<header>
+            <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdownai">
+                  <a href="#">Web Development ▼</a>
+                  <ul class="dropdown-menuai">
+                      <li><a href="Custom Websites.html">Custom Websites </a></li>
+                      <li><a href="Business Websites.html">Business Websites</a></li>
+                      <li><a href="Portfolio Websites.html">Portfolio Websites</a></li>
+                      <li><a href="Corporate Websites.html"> Corporate Websites</a></li>
+                      <li><a href="E-Commerce Websites.html"> E-Commerce Websites</a></li>
+                      <li><a href="SEO-Friendly Websites.html"> SEO-Friendly Websites</a></li>
+
+                  </ul>
+                  
+              </li> 
+
+
+              <li class="dropdownai">
+                <a href="#">App Development ▼</a>
+                <ul class="dropdown-menuai">
+                    <li><a href="mobile.html">Mobile App Development</a></li>
+                    <li><a href="android.html">Android App Development</a></li>
+                    <li><a href="Android UI/UX Design.html">Android UI/UX Design</a></li>
+                    <li><a href="ios.html"> iOS App Development</a></li>
+                    <li><a href="flutter.html"> Flutter Development</a></li>
+                    <li><a href="web.html"> Web App Development</a></li>
+
+                </ul>
+                
+            </li> 
+
+
+            <li class="dropdownai">
+              <a href="#">Services ▼</a>
+              <ul class="dropdown-menuai">
+                  <li><a href="website.html">Website Design & Development </a></li>
+                  <li><a href="android.html">Android App Development</a></li>
+                  <li><a href="ios.html">   iOS App Development</a></li>
+                  <li><a href="UI/UX Design.html">UI/UX Design    </a></li>
+                  <li><a href="ecommerce.html">Digital Marketing</a></li>
+                  <li><a href="portfolio.html">Portfolio</a></li>
+                  <li><a href="Custom AI Solutions.html">Custom AI Solutions</a></li>
+                  
+              </ul>
+              
+          </li> 
+
+
+                <li class="dropdownai">
+                  <a href="#">Digital Marketing ▼</a>
+                  <ul class="dropdown-menuai">
+                      <li><a href="SEO Services.html">SEO Services   </a></li>
+                      <li><a href="Social Media Marketing.html">Social Media Marketing </a></li>
+                      <li><a href="Content Strategy.html">Content Strategy</a></li>
+                      <li><a href="iOS App Development.html">   Pay-Per-Click Campaigns</a></li>
+                      
+                  </ul>
+                  
+              </li> 
+  
+              <li class="dropdownai">
+                <a href="ecommerce.html">E-Commerce Solutions ▼</a>
+                <ul class="dropdown-menuai">
+                    <li><a href="Custom E-Commerce Websites.html">Custom E-Commerce Websites   </a></li>
+                    <li><a href="E-Commerce Mobile App Development">E-Commerce Mobile App Development </a></li>
+                    <li><a href="Full E-Commerce Website Development.html">Full E-Commerce Website Development</a></li>
+                    <li><a href="Shopify Development.html">  Shopify Development</a></li>
+                    
+                </ul>
+                
+            </li> 
+
+                
+
+                <li><a href="blog.html">Blog</a></li>
+
+                <li><a href="portfolio.html">Portfolio</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!-- Main Content Sections -->
+<section class="main-content">
+
+    <div class="sectionexam">
+        <div class="section-header">
+            <h2>Website <marquee>what do you want?</marquee></h2>
+            <div class="top-links">
+              <a href="website.html">Website</a>
+              <a href="app.html">Application</a>
+              <a href="Software.html">Software</a>
+              <a href="ecommerce.html">Ecommerce</a>
+            </div>
+        </div>
+    
+        <div class="content-boxexam">
+            <div class="news-boxexam">
+                <img src="custom.webp" alt="Exam News">
+                <h3>Custom Websites</h3>
+                <p>click here for the order and see the custom website ....</p>
+                <a href="website.html" class="read-more">Read More</a>
+            </div>
+            
+            <div class="news-boxexam">
+                <img src="business.avif" alt="Exam News">
+                <h3>Business Websites</h3>
+                <p>let see you want to create business website,....</p>
+                <a href="Business Websites.html" class="read-more">Read More</a>
+            </div>
+    
+            <div class="news-boxexam">
+                <img src="portfolio.webp" alt="Exam News">
+                <h3>Portfolio Websites</h3>
+                <p>If you want then click here for order and we make portfolios website..</p>
+                <a href="Portfolio Websites.html" class="read-more">Read More</a>
+            </div>
+        </div>
+
+
+
+         <div class="content-boxexamanother">
+          <div class="news-boxexamanother">
+              <img src="sportss.jpg" alt="Exam News">
+              <h3>Sports Websites</h3>
+              <p>If you want, then click here for order and we make Sports Websites  ...</p>
+              <a href="sport Websites.html" class="read-more">Read More</a>
+          </div>
+          
+          <div class="news-boxexamanother">
+              <img src="ecommerce.jpg" alt="Exam News">
+              <h3>E-Commerce Websites</h3>
+              <p>If you want, then click here for order and we make Ecommerce Websites </p>
+              <a href="ecommerce.html" class="read-more">Read More</a>
+          </div>
+  
+          <div class="news-boxexamanother">
+              <img src="seo.jpg" alt="Exam News">
+              <h3>SEO-Friendly Websites</h3>
+              <p>If you want, then click here for order and we make SEO-Friendly Websites...</p>
+              <a href="SEO-Friendly Websites.html" class="read-more">Read More</a>
+          </div>
+      </div> 
+    </div>
+    
+
+  
+    <div class="main-container">
+        <!-- Combined Section: Wraps both left and right columns -->
+        <div class="combined-section">
+          <!-- Left Column: Subject-wise GK -->
+          <div class="column left-col">
+            <div class="subject-header">
+              <h2>App Development</h2>
+            </div>
+            <div class="top-links">
+             
+                <a href="website.html">Website</a>
+                <a href="app.html">Application</a>
+                <a href="Software.html">Software</a>
+                <a href="ecommerce.html">Ecommerce</a>
+            
+            </div>
+            <!-- News Box 1 -->
+            <div class="news-box-subject">
+              <img src="mob.png" alt="Exam News">
+              <div class="news-content-subject">
+                <h3>Mobile App Development</h3>
+                <p>every kind of mobile app are here. for the get this type of app then click here and contact or email us.</p>
+                <a href="mobile.html" class="read-more">Read More</a>
+              </div>
+            </div>
+            <!-- News Box 2 -->
+            <div class="news-box-subject">
+              <img src="android1.png" alt="Exam News">
+              <div class="news-content-subject">
+                <h3>Android App Development</h3>
+                <p>for the only android app want clien click here and order us.</p>
+                <a href="android.html" class="read-more">Read More</a>
+              </div>
+            </div>
+
+
+            <div class="news-box-subject">
+              <img src="ios.jpg" alt="Exam News">
+              <div class="news-content-subject">
+                <h3>iOS App Development </h3>
+                <p>for the only IOS app want clien click here and order us.</p>
+                <a href="ios.html" class="read-more">Read More</a>
+              </div>
+            </div>
+            <!-- News Box 2 -->
+            <div class="news-box-subject">
+              <img src="webapp.jpg" alt="Exam News">
+              <div class="news-content-subject">
+                <h3>Web App Development</h3>
+                <p>after make the website then you want to this type of app are make here then, click here and order us.</p>
+                <a href="loksewa-news.html" class="read-more">Read More</a>
+              </div>
+            </div>
+
+
+          </div>
+
+
+          
+          <!-- Right Column: DANGOL Chatbot & Writing Assistant -->
+          <div class="column right-col">
+            <div class="subject-headerai">
+                <h2>DANGOL AI</h2>
+              </div>
+              <div class="top-linksai">
+                <a href="website.html">Website</a>
+                <a href="app.html">Application</a>
+                <a href="Software.html">Software</a>
+                <a href="ecommerce.html">Ecommerce</a>
+              </div>
+              <a href="dangol-chatbot.html">
+            <div class="chatbot-container">
+              <h1>DANGOL Chatbot</h1>
+              <textarea placeholder="Ask a GK question..."></textarea>
+              <!-- <input type="text" id="chat-input" placeholder="Ask a GK question..."> -->
+              <button onclick="chatAI()">Ask Chatbot</button>
+            </a>
+              <div class="chat-output" id="chat-output"></div>
+            </div>
+
+
+            <div class="writing-assistant">
+              <h2>DANGOL Writing Assistant</h2>
+              <textarea placeholder="Write your article here..."></textarea>
+              <button class="submit-btn">Submit</button>
+            </div>
+            
+
+
+            <div class="image-generator">
+              <h2>🖼️  DANGOL Image Generator</h2>
+              <textarea placeholder="Enter image description....."></textarea>
+              <!-- <input type="text" id="image-topic" placeholder="Enter image description..."> -->
+            <button onclick="generateImage()">Generate Image</button>
+            <img id="image-output" src="" alt="Generated AI Image" style="display:none; width:100%; margin-top:10px;">
+            </div>
+
+
+            <a href="gk.html">
+            <div class="recommendation-container">
+              <h1>📚 GK Recommendations</h1>
+              <textarea placeholder="Enter your interest (e.g., History, Science)...."></textarea>
+              <!-- <input type="text" id="interest-input" placeholder="Enter your interest (e.g., History, Science)..."> -->
+              <button onclick="getRecommendations()">Get Recommendations</button>
+            </a>
+              <div class="recommendation-output" id="recommendation-output"></div>
+              <!-- Close button for the dropdown -->
+      <button id="close-btn" onclick="closeDropdown()">×</button>
+      <div id="recommendation-list"></div>
+            </div>
+
+
+          </div>
+      </div>
+      
+      
+</section>
+
+<!-- Scrollable Section -->
+<section class="scroll-section">
+  <h2 class="scroll-heading">Services</h2>
+  <div class="scroll-container">
+      <div class="scroll-content">
+          <!-- Scroll Item 1 -->
+          <div class="scroll-item">
+              <a href="website.html">
+                  <img src="webdesign.jpg" alt="Website Design & Development">
+              </a>
+              <h3>Website Design & Development</h3>
+              <p>click here and order us to what do you want create.</p>
+          </div>
+          <!-- Scroll Item 2 -->
+          <div class="scroll-item">
+              <a href="app.html">
+                  <img src="android1.png" alt="Android App Development">
+              </a>
+              <h3>Android App Development</h3>
+              <p>click here for the create Android App Development.</p>
+          </div>
+          <!-- Scroll Item 3 -->
+          <div class="scroll-item">
+              <a href="ios.html">
+                  <img src="io.jpg" alt="iOS App Development">
+              </a>
+              <h3>iOS App Development</h3>
+              <p>Learn about continents, countries, and 
+                geographical phenomena.</p>
+          </div>
+          <!-- Scroll Item 4 -->
+          <div class="scroll-item">
+              <a href="UI/UX Design.html">
+                  <img src="mobile app.webp" alt="UI/UX Design">
+              </a>
+              <h3>UI/UX Design</h3>
+              <p> UI/UX Design kind of web and app are create here order us..</p>
+          </div>
+          <!-- Scroll Item 5 -->
+          <div class="scroll-item">
+              <a href="marketing.html">
+                  <img src="digital.jpg" alt="Digital Marketing">
+              </a>
+              <h3>Digital Marketing</h3>
+              <p>for the Digital Marketing website and application.</p>
+          </div>
+          <!-- Scroll Item 6 -->
+          <div class="scroll-item">
+              <a href="Custom AI Solutions.html">
+                  <img src="customai.jpg" alt="Custom AI Solutions">
+              </a>
+              <h3>Custom AI Solutions</h3>
+              <p>Get Custom AI Solutions if you wan then click here. </p>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<!-- <section class="marquee-section">
+    <div class="gk-marquee">
+      <div class="gk-label">
+        <h2>GK:</h2>
+      </div>
+      <div class="marquee">
+        <div class="marquee-content">
+          Latest GK Updates – Breaking news on global GK, events, and more! &nbsp;&nbsp;&nbsp;
+          More GK details – Insights, statistics, and analyses! &nbsp;&nbsp;&nbsp;
+          Even more updates – Stay informed with the latest happenings!
+        </div>
+      </div>
+    </div>
+  </section> 
+   -->
+  
+
+
+
+
+
+
+
+
+
+<!-- Hero Section -->
+ <!-- <section class="avator">
+  <div class="wholeavator">
+  <div class="after">
+    <h1>EASY WAY</h1>
+  </div>
+  
+<div class="hero">
+  
+  
+    <div class="left">
+        <img src="images/engineer.jpg" alt="Quiz">
+        <a href="quiz.html"><h2> Quiz </h2></a>
+
+         
+        <p>Daily updates on GK, Exams, Politics, and More. 
+           you can click here adn view all the gk questions of the quiz.</p>
+        <a href="quiz.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+    </div>
+    <div class="middle">
+      <img src="images/engineer.jpg" alt="Quiz">
+
+      <a href="mcq.html"><h2>MCQ</h2></a>
+       <p>Daily updates on GK facts, News of world, sport, and More.</p>
+       <a href="mcq.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+  </div>
+
+    <div class="right">
+      <img src="images/engineer.jpg" alt="Quiz">
+
+       <a href="edu.html"> <h2>education</h2></a>
+         <p>Daily updates on GK facts, News of world, sport, and More.</p>
+         <a href="edu.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+    </div>
+</div>
+ -->
+
+
+
+
+
+
+
+
+<!-- <div class="hero1">
+    <div class="leftdown">
+      <img src="images/engineer.jpg" alt="Quiz">
+
+      <a href="edu.html"> <h2>UPSC questions</h2></a>
+        <p> In this paragraph have only upsc board exam questions 
+          , mid term exam questions with answer. </p>
+          <a href="quiz.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+    </div>
+    <div class="middledown">
+      <img src="images/engineer.jpg" alt="Quiz">
+
+      <a href="iit.html"> <h2>IIT questions</h2></a>
+      <p> In this paragraph have only upsc board exam questions 
+        , mid term exam questions with answer. </p>
+        <a href="quiz.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+  </div>
+    <div class="rightdown">
+      <img src="images/engineer.jpg" alt="Quiz">
+
+      <a href="jee.html"> <h2>jee questions with paper</h2></a>
+        <p> in this paragraph have jee old exam questions answer. </p>
+        <a href="quiz.html" class="read-moreeasy"> <h1>Read More</h1> </a>
+
+    </div>
+</div> 
+     </div>
+</section>
+ -->
+
+
+<section class="faq-section">
+  <h2>Website Builder FAQ</h2>
+  <div class="faq-container">
+      <div class="faq-item">
+          <div class="faq-question">
+              <span>Is it easy to build a website?</span>
+              <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer" data-answer="Yes, modern website builders make it simple to create a professional website."></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+            <span>which type of website are you want?</span>
+            <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer" data-answer="every kind of website are available only order give us."></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">
+          <span>which type of application available her?</span>
+          <span class="arrow">&#9660;</span>
+      </div>
+      <div class="faq-answer" data-answer="Here many variety of application available."></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+        <span>In Application both Adriod and IOS Apps are availabe?</span>
+        <span class="arrow">&#9660;</span>
+    </div>
+    <div class="faq-answer" data-answer="Yes, no doubt here both android and ios both mobile to navigate app are suitable ."></div>
+</div>
+
+
+      <div class="faq-item">
+          <div class="faq-question">
+              <span>How do I create a website?</span>
+              <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer" data-answer="You can create a website using a builder, CMS, or by coding with HTML, CSS, and JavaScript."></div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">
+              <span>How do I choose the best website builder?</span>
+              <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer" data-answer="Consider ease of use, customization, pricing, and customer support."></div>
+      </div>
+      <div class="faq-item">
+          <div class="faq-question">
+              <span>What types of websites can you build on DANGOL AI?</span>
+              <span class="arrow">&#9660;</span>
+          </div>
+          <div class="faq-answer" data-answer="DANGOL allows you to build e-commerce, blogs, portfolios, and business sites."></div>
+      </div>
+  </div>
+</section>
+
+
+    
+
+   
+
+      
+
+
+
+ <footer>
+  <div class="footer-containerai">
+    <!-- Products Section -->
+    <div class="footer-sectionai">
+      <h3>Products</h3>
+      <ul>
+        <li><a href="#">DANGOL Platform</a></li>
+        <li><a href="#">DANGOL Data Services</a></li>
+        <li><a href="#">DANGOL Postgres</a></li>
+        <li><a href="#">DANGOL Key-Value Store</a></li>
+      </ul>
+    </div>
+
+    <!-- Enterprise Section -->
+    <div class="footer-sectionai">
+      <h3>DANGOL Enterprise</h3>
+      <ul>
+        <li><a href="#">DANGOL Private Spaces</a></li>
+        <li><a href="#">DANGOL Connect</a></li>
+        <li><a href="#">DANGOL Shield</a></li>
+        <li><a href="#">DANGOL Teams</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="footer-sectionai">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Compliance Center</a></li>
+        <li><a href="#">Training & Education</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Company Info -->
+    <div class="footer-sectionai">
+      <h3>Contact Info</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Phone: 9763774451 </a></li>
+        <!-- <li><a href="#">    Fax: 9864164581 (HR)</a></li> -->
+        <li><a href="#">    E-Mail: dangolraman843@gmail.com</a></li>
+        <li><a href="#"> Web: https://www.dangolai.com.np</a></li>
+      </ul>
+    </div>
+
+    
+
+
+    <!-- Support Section -->
+    <div class="footer-sectionai">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Partners</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-sectionai">
+      <h3>Follow Us</h3>
+      <div class="social-linksai">
+        <a href="https://github.com/raman1224"><img src="github.png" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/dangol1224/"><img src="linkedin.png" alt="LinkedIn"></a>
+        <a href="#"><img src="x.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section: Logo and Creative Ideas -->
+  <div class="footer-bottomai">
+    <div class="footer-leftai">
+      <div class="logo-containerai">
+        <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
+        <p>DANGOL AI</p>
+      </div>
+    </div>
+    <div class="footer-rightai">
+      <p><strong>DANGOL AI Creation</strong></p>
+      <p>We empower you to create anything with cutting-edge AI tools! Whether it's developing intelligent chatbots, building AI-driven apps, or automating your business processes, DANGOL AI is here to help you innovate and transform the world.</p>
+      <p>Explore our AI tools to unlock endless possibilities!</p>
+    </div>
+  </div>
+</footer>
+
+
+       
+    <!-- </footer>
+
+            <a href="about.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="terms.html">Terms & Conditions</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="disclaimer.html">Disclaimer</a> |
+            <a href="sitemap.html">Sitemap</a>
+        </div>
+        <p>Developed by RAMAN DANGOL</p>
+    </footer> -->
+
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Global GK</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #2a2a72;
+      color: white;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 30px;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgb(125, 183, 216);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Input Fields */
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    /* Remember Me Section */
+    .remember-me {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .remember-me label {
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Button Styles */
+    .sign-up-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #2a2a72;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .sign-up-btn:hover {
+      background-color: #1f1f57;
+    }
+
+    /* Social Media Login */
+    .social-login {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .social-btn {
+      width: 100%;
+      padding: 12px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .icons i {
+      color: rgb(229, 233, 235);
+      padding: 0.8rem 1.5rem; 
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border: 2px solid #dfe9df;
+      margin: 0 15px;
+      transition: 1s;
+    }
+
+    .icons i:hover {
+      background: rgb(41, 38, 38);
+      font-size: 1.6rem;
+      border: 2px solid rgb(193, 193, 205);
+    }
+
+    .google {
+      background-color: #db4437;
+      color: white;
+    }
+
+    .facebook {
+      background-color: #3b5998;
+      color: white;
+    }
+
+    .linkedin {
+      background-color: #0077b5;
+      color: white;
+    }
+
+    /* Redirect Link */
+    .redirect-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .redirect-link a {
+      text-decoration: none;
+      color: #2a2a72;
+    }
+
+    .redirect-link button {
+      color: rgb(18, 18, 21);
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 5px;
+    }
+
+    .redirect-link button:hover {
+      color: rgb(7, 7, 175);
+      text-decoration: underline;
+    }
+
+    /* Mobile-Responsive */
+    @media screen and (max-width: 600px) {
+      .form-container {
+        padding: 15px;
+      }
+
+      .sign-up-btn {
+        font-size: 14px;
+      }
+
+      header h1 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo and Global GK Text -->
+  <header>
+    <div class="logo">🌎 Global GK</div>
+    <h1>Global GK</h1>
+  </header>
+
+  <!-- Sign Up Form -->
+  <div class="form-container" id="signup">
+    <form id="signup-form">
+      <h2>Register</h2>
+      <div class="input-group">
+        <!-- Name Input -->
+        <input type="text" name="name" placeholder="Full Name" required>
+
+        <!-- Email Input -->
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <!-- Password Input -->
+        <input type="password" name="password" placeholder="Password" required>
+
+        <!-- Remember Me Checkbox (Left Aligned) -->
+        <div class="remember-me">
+          <input type="checkbox" name="remember-me" id="remember-me">
+          <label for="remember-me">Remember Me</label>
+        </div>
+      </div>
+      <!-- Sign Up Button -->
+      <button type="submit" class="sign-up-btn">Sign Up</button>
+
+      <!-- Social Media Login -->
+      <div class="social-login">
+        <p>or sign up with:</p>
+        <div class="icons">
+          <i class="fab fa-google"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+        </div>
+      </div>
+
+      <!-- Redirect to Login -->
+      <div class="redirect-link">
+        Already have an account? <button id="signInButton">Sign In</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Sign In Form -->
+  <div class="form-container" id="signin" style="display: none;">
+    <form id="sign-in-form">
+      <h2>Sign In</h2>
+      <div class="input-group">
+        <!-- Email Input -->
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <!-- Password Input -->
+        <input type="password" name="password" placeholder="Password" required>
+
+        <!-- Remember Me Checkbox (Left Aligned) -->
+        <div class="remember-me">
+          <input type="checkbox" name="remember-me" id="remember-me">
+          <label for="remember-me">Remember Me</label>
+        </div>
+      </div>
+      <!-- Log In Button -->
+      <button type="submit" class="sign-up-btn">Sign In</button>
+
+      <!-- Social Media Login -->
+      <div class="social-login">
+        <p>.....or....</p>
+        <div class="icons">
+          <i class="fab fa-google"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+        </div>
+      </div>
+
+      <!-- Redirect to Sign Up -->
+      <div class="redirect-link">
+        Don't have an account? <button id="signUpButton">Sign Up</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const signUpButton = document.getElementById('signUpButton');
+    const signInButton = document.getElementById('signInButton');
+    const signInForm = document.getElementById('signin');
+    const signUpForm = document.getElementById('signup');
+
+    signUpButton.addEventListener('click', function() {
+      signInForm.style.display = "none";
+      signUpForm.style.display = "block";
+    });
+
+    signInButton.addEventListener('click', function() {
+      signInForm.style.display = "block";
+      signUpForm.style.display = "none";
+    });
+  </script>
+</body>
+</html>
