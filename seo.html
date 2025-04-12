@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DANGOL AI | SEO Services</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #34495e;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      display: block;
+    }
+
+    nav a:hover {
+      color: #9fe37a;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      align-items: end;
+      color: white;
+    }
+
+    .seo-section {
+      padding: 40px 20px;
+      background-color: white;
+    }
+
+    .seo-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .seo-content img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .seo-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .seo-text h2 {
+      color: #2c3e50;
+    }
+
+    .seo-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .contact-section {
+      padding: 40px 20px;
+      background-color: #ecf0f1;
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background-color: #2980b9;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #1c5980;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      color: white;
+      margin-top: 50px;
+    }
+
+    /* ======= Mobile View Styling ======= */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #34495e;
+        width: 100%;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 0;
+        border-top: 1px solid #445d77;
+      }
+
+      .menu-toggle {
+        display: block;
+        align-items: end;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+
+      .seo-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .seo-content img {
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>DANGOL AI</h1>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <nav>
+    <ul id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="seo.html">SEO Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="seo-section">
+  <div class="seo-content">
+    <img src="seo.jpg" alt="SEO Services Image" />
+    <div class="seo-text">
+      <h2>Boost Your Website Ranking with DANGOL AI SEO</h2>
+      <p>We offer expert SEO services that improve your website's visibility, drive organic traffic, and increase conversions. Our approach is data-driven, modern, and completely tailored to your business needs.</p>
+      <p><strong>Our SEO Services Include:</strong></p>
+      <ul>
+        <li>✅ On-Page & Off-Page SEO Optimization</li>
+        <li>✅ Keyword Research & Competitor Analysis</li>
+        <li>✅ Technical SEO (Speed, Mobile, Indexing)</li>
+        <li>✅ Content Optimization & Backlink Strategy</li>
+        <li>✅ Local SEO for Google My Business</li>
+        <li>✅ Monthly SEO Reports & Improvements</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <h2>Contact Us</h2>
+  <form action="mailto:dangolrapper@gmail.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 DANGOL AI — SEO Services Powered by DANGOL AI
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>

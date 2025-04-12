@@ -1,0 +1,168 @@
+
+<div class="hamburger" onclick="toggleMobileMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+<ul>
+  <li><a href="index.html">Home</a></li>
+  <li class="dropdownai">
+    <a href="about.html">About Us ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="history.html">Our History</a></li>
+      <li><a href="mission.html">Mission & Vision</a></li>
+      <li><a href="value.html">Our Values</a></li>
+      <li><a href="leadership.html">Leadership and Committee</a></li>
+    </ul>
+  </li>
+  <li class="dropdownai">
+    <a href="community.html">Community ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="language.html">Newari Language Translator</a></li>
+      <li><a href="learn.html">Learn Newari</a></li>
+
+      <li><a href="cultures.html">Cultures</a></li>
+      <li><a href="religion.html">Religion</a></li>
+    </ul>
+  </li>
+  <li class="dropdownai">
+    <a href="events.html">Events ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="upcoming.html">Upcoming Event</a></li>
+      <li><a href="past.html">Past Events</a></li>
+      <li><a href="gallery.html">Events Gallery</a></li>
+      <li><a href="calendar.html">Festival Calendar</a></li>
+    </ul>
+  </li>
+  <li class="dropdownai">
+    <a href="membership.html">Membership ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="joinus.html">Join Us</a></li>
+      <li><a href="benefits.html">Membership Benefits</a></li>
+      <li><a href="memberdirectory.html">Member Directory</a></li>
+    </ul>
+  </li>
+  <li class="dropdownai">
+    <a href="news.html">News & Updates ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="latest.html">Latest News</a></li>
+      <li><a href="announcements.html">Announcements</a></li>
+      <li><a href="newsletter.html">Newsletter Archive</a></li>
+      <li><a href="Shopify Development.html">Shopify Development</a></li>
+    </ul>
+  </li>
+  <li class="dropdownai">
+    <a href="contactus.html">Contact Us ▼</a>
+    <ul class="dropdown-menuai">
+      <li><a href="contactform.html">Contact Form</a></li>
+      <li><a href="social.html">Social Media Links</a></li>
+      <li><a href="official.html">Official Address</a></li>
+    </ul>
+  </li>
+  <li><a href="gallery.html">Gallery</a></li>
+  <li><a href="calender.html">Newa Calendar</a></li>
+
+  <li><a href="mem.html">FAQs</a></li>
+</ul>
+</nav>
+
+
+<style>
+
+  
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+  }
+  
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #222;
+    padding: 10px 20px;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mobile-menu a {
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #444;
+  }
+  
+  .mobile-menu .dropdown-menuai {
+    display: none;
+    padding-left: 15px;
+  }
+  
+  .mobile-menu .dropdownai:hover .dropdown-menuai {
+    display: block;
+  }
+  
+  /* Show mobile menu when "show" class is added */
+  .mobile-menu.show {
+    display: flex;
+  }
+  
+  /* Media query for laptop/desktop view */
+  @media (min-width: 768px) {
+    /* Hide hamburger on larger screens */
+    .hamburger {
+      display: none;
+    }
+  
+    /* Show the top bar dropdown menus */
+    .mobile-menu {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row;
+    }
+  
+    .mobile-menu ul {
+      display: flex;
+      gap: 20px;
+    }
+  
+    .mobile-menu .dropdownai {
+      position: relative;
+    }
+  
+    .mobile-menu .dropdownai:hover .dropdown-menuai {
+      display: block;
+    }
+  
+    /* Optional: Make dropdown menus align horizontally */
+    .mobile-menu .dropdown-menuai {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #333;
+      width: 200px;
+    }
+  }
+  
+
+
+
+
+
+
+
+</style>

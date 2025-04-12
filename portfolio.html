@@ -1,208 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANGOL AI Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { background-color: #f4f4f4; }
-        header { background: #002244; color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 22px; font-weight: bold; }
-        nav ul { list-style: none; display: flex; }
-        nav ul li { margin: 0 15px; position: relative; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
-        nav ul li:hover .dropdown { display: block; }
-        .dropdown { display: none; position: absolute; background: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); top: 30px; left: 0; min-width: 180px; }
-        .dropdown a { display: block; padding: 10px; color: #002244; }
-        .dropdown a:hover { background: #ddd; }
-        .dashboard { text-align: center; padding: 40px; }
-        .cards { display: flex; justify-content: center; gap: 20px; height: 500px; width: 100%; border-radius: 7px; margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px; }
-        .card { background: white; padding: 20px; width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  margin-top: 5px; height: 430px; width: 31%; margin-bottom: 10px;}
-        .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
-        .footer { background: #141516; height: 100px; color: white;  margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
-        /* Bottom section: Left and Right Alignment */
-  .footer-bottomai {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: #111;
-    margin-top: 20px;
-  }
-  
-  .footer-leftai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .logo-containerai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .footer-logoai {
-    width: 150px;
-    height: 150px;
-    border-radius: 1080px;
-    margin-right: 10px;
-  }
-  
-  .footer-rightai {
-    text-align: right;
-    max-width: 50%;
-  }
-  
-  .footer-rightai p {
-    color: #ccc;
-  }
-  
-  .footer-rightai strong {
-    color: #ff6600;
-  }
-  
-  .footer-rightai a {
-    color: #ff6600;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  .footer-rightai a:hover {
-    text-decoration: underline;
-  }
- 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DANGOL AI | Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
 
-  
+    header {
+      background-color: #34495e;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-   /* Responsive Design */
-   /* @media (max-width: 768px) {
-            header { flex-direction: column; align-items: flex-start; }
-            .menu-toggle { display: block; }
-            nav ul { display: none; flex-direction: column; width: 100%; background: #002244; padding: 10px; }
-            nav ul li { text-align: left; margin: 5px 0; }
-            nav ul.show { display: flex; }
-            .cards { flex-direction: column; align-items: center; margin-top: 40px; margin-bottom: 30px;  }
-            .card { flex-direction: column; align-items: center; margin-top: 100px; width: 100%; height: 300px; margin-bottom: 100px;
-            }
-            .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
 
-            .footer-bottomai { flex-direction: column; text-align: center; }
-            .footer-rightai { max-width: 100%; }
-        } */
+    nav ul li {
+      margin-right: 15px;
+    }
 
-  
-    </style>
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      display: block;
+    }
+
+    nav a:hover {
+      color: #f1c40f;
+    }
+
+    .hamburger {
+      display: none;
+      align-items: end;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 30px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    
+    .hamburger div {
+      height: 5px;
+      width: 100%;
+      background-color: white;
+      border-radius: 3px;
+    }
+
+
+    
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #34495e;
+      width: 200px;
+      border-radius: 5px;
+    }
+
+
+    
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+
+
+    
+    .mobile-menu ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      display: block;
+    }
+
+    .mobile-menu ul li a:hover {
+      background-color: #2c3e50;
+    }
+
+    .portfolio-section {
+      padding: 40px 20px;
+      background-color: white;
+    }
+
+    .portfolio-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .portfolio-content img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .portfolio-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .portfolio-text h2 {
+      color: #2c3e50;
+    }
+
+    .portfolio-text p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-list {
+      margin-top: 20px;
+    }
+
+    .project-list ul {
+      padding-left: 20px;
+    }
+
+    .project-list li {
+      margin-bottom: 12px;
+    }
+
+    .contact-section {
+      padding: 40px 20px;
+      background-color: #ecf0f1;
+    }
+
+    .contact-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background-color: #2980b9;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #1c5980;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      color: white;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+        color: #111827;
+        align-items: end;
+      }
+
+      .mobile-menu {
+display: block;
+      }
+      .mobile-menu ul li {
+        border-bottom: 1px solid #444;
+      }
+
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">🌎 DANGOL AI</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>
-                    <a href="website.html">Digital Marketing</a>
-                    <div class="dropdown">
-                        <a href="Social Media Marketing .html">Social Media Marketing </a>
-                        <a href="Content Strategy.html">Content Strategy</a>
-                        <a href="Pay-Per-Click Campaigns.html">Pay-Per-Click Campaigns</a>
-                    </div>
-                </li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.htmls">Contact</a></li>
-            </ul>
-        </nav>
 
+<header>
+  <h1>DANGOL AI</h1>
+  <div class="hamburger" onclick="toggleMenu()">
 
+    <div></div>
+    <div></div>
+    <div></div>
+    
+    
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="seo.html">SEO</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="seo.html">SEO</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+        </ul>
+  </div>
+</header>
 
-        SEO Services   </a></li>
-        <li><a href="Social Media Marketing.html">Social Media Marketing </a></li>
-        <li><a href="Content Strategy.html">Content Strategy</a></li>
-        <li><a href="iOS App Development.html">   Pay-Per-Click Campaigns</a></li>
-        
+<section class="portfolio-section">
+  <div class="portfolio-content">
+   <a href="portfolio.html"> <img src="portfolio.webp" alt="DANGOL AI Portfolio"></a>
+    <div class="portfolio-text">
+      <h2>Our Creative Work</h2>
+      <p>Explore some of the powerful websites, mobile apps, and software platforms built by DANGOL AI. Each project demonstrates our commitment to innovation, design, and user experience.</p>
+      <div class="project-list">
+        <ul>
 
+         <a href=" https://raman1224.github.io/ramandangol/"> <li>📊 <strong>Raman Dangol</strong></a> – Own portfolio websites can you visit.</li>
 
+         <a href="https://globalgkwww.blogspot.com/"> <li>🌐 <strong>Global GK</strong></a> – AI-based knowledge platform with exams and quizzes</li>
+          <a href=" https://raman1224.github.io/DANGOL_AI/"><li>🎨 <strong>DANGOL AI Website</strong></a> – Complete AI service platform with design and code tools</li>
+          <li>📱 <strong>SmartBiz App</strong> – Business management app for SMEs</li>
 
-    </header>
-    <div class="dashboard">
-        <h2>Digital Marketing</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Social Media Marketing </h3>
-                <img src="laptop.png" alt="Social Media Marketing " >
-
-                <p>Social Media Marketing  HTML, CSS, JavaScript, React, Angular.</p>
-            </div>
-            <div class="card">
-                <h3>Content Strategy</h3>
-                <img src="laptop.png" alt="Content Strategy" >
-
-                <p> Content Strategy  Node.js, Django, PHP, Databases.</p>
-            </div>
-            <div class="card">
-                <h3>Pay-Per-Click Campaigns</h3>
-                <img src="laptop.png" alt="Pay-Per-Click Campaigns" >
-
-                <p>Pay-Per-Click Campaigns.</p>
-            </div>
-        </div>
-
-        <!-- <div class="cards">
-            <div class="card">
-                <h3>E-Commerce Websites</h3>
-                <img src="laptop.png" alt="eCommerce website" >
-
-                <p>HTML, CSS, JavaScript, React, Angular.</p>
-            </div>
-            <div class="card">
-                <h3>Portfolio Websites</h3>
-                <img src="laptop.png" alt="portfolio website" >
-                <p>Node.js, Django, PHP, Databases.</p>
-            </div>
-            <div class="card">
-                <h3>Business Websites</h3>
-                <img src="laptop.png" alt="business website">
-                <p>Combination of Frontend & Backend.</p>
-            </div>
-        </div> -->
+          <li>🛍️ <strong>Online Store Template</strong> – SEO-friendly e-commerce site for product sellers</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
+<section class="contact-section">
+  <h2>Let's Build Something Together</h2>
+  <form action="mailto:dangolrapper@gmail.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
+<footer>
+  &copy; 2025 DANGOL AI — Building the Future with Code 🚀
+</footer>
 
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.mobile-menu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block' ;
+  }
+</script>
 
-
-
-
-
-
-
-    <footer class="footer">
-        <div class="footer-bottomai">
-            <div class="footer-leftai">
-              <div class="logo-containerai">
-                <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
-                <p>DANGOL AI</p>
-              </div>
-            </div>
-            <div class="footer-rightai">
-              <p><strong>DANGOL AI Creation</strong></p>
-              <p>We create anything with Web designing and app designing tools! Whether it's developing intelligent chatbots, building AI-driven apps, or automating your business processes, DANGOL AI is here to help you innovate and transform the world.</p>
-
-
-              <p>Explore our AI tools to unlock endless possibilities!</p>
-            </div>
-          </div>
-        <div>
-            <h4>Resources</h4>
-            <p><a href="#" style="color:white; text-decoration:none;">Documentation</a></p>
-            <p><a href="#" style="color:white; text-decoration:none;">Developer Center</a></p>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <p>Email: support@dangolai.com</p>
-        </div>
-    </footer>
 </body>
 </html>

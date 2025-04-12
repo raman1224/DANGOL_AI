@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dangol AI - Writing Assistant</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            color: var(--primary);
+        }
+        .nav-menu li a {
+            color: rgb(8, 8, 8);
+            text-align: left;
+        }
+
+        .nav-menu li:hover {
+            background: var(--light);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu li {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .editor-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .editor-tools {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--secondary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            width: 100%;
+            height: 500px;
+            padding: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .suggestions {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            height: 500px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .suggestion-item:hover {
+            transform: translateX(5px);
+        }
+
+        .loading {
+            display: none;
+            color: var(--secondary);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .ai-response {
+            background: #fff9e6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #f1c40f;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .editor-section {
+                grid-template-columns: 1fr;
+            }
+
+            textarea {
+                height: 300px;
+            }
+
+            .editor-tools {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand">Dangol AI</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="generator.html">Generator AI</a></li>
+                <li><a href="dangol-chatbot.html"> Chatbot AI</a></li>
+                <li><a href="translator.html"> Translator AI</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="generator.html">Generator AI</a></li>
+                <li><a href="dangol-chatbot.html"> Chatbot AI</a></li>
+                <li><a href="translator.html"> Translator AI</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>AI Writing Assistant ✍️</h1>
+        <div class="editor-tools">
+            <button onclick="improveGrammar()">Improve Grammar</button>
+            <button onclick="expandContent()">Expand Content</button>
+            <button onclick="shortenContent()">Shorten Content</button>
+            <button onclick="generateIdeas()">Generate Ideas</button>
+        </div>
+        
+        <div class="editor-section">
+            <textarea id="main-editor" placeholder="Start writing here..."></textarea>
+            
+            <div class="suggestions">
+                <div class="loading" id="loading">AI is working... ⚡</div>
+                <div id="suggestions-container"></div>
+                <div id="ai-response" class="ai-response"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Dangol AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // AI Engine (Simulated Backend)
+        const writingAI = {
+            async processRequest(text, action) {
+                this.showLoading();
+                
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        this.hideLoading();
+                        resolve(this.generateMockResponse(text, action));
+                    }, 1500);
+                });
+            },
+
+            generateMockResponse(text, action) {
+                const responses = {
+                    improveGrammar: `Improved version: ${text} (grammar enhanced)`,
+                    expandContent: `Expanded content: ${text} ${'Additional details added. '.repeat(3)}`,
+                    shortenContent: `Concise version: ${text.split(' ').slice(0, 15).join(' ')}...`,
+                    generateIdeas: ['Try adding statistics', 'Include relevant example', 'Consider historical context']
+                };
+
+                return responses[action] || "AI response not available";
+            },
+
+            showLoading() {
+                document.getElementById('loading').style.display = 'block';
+            },
+
+            hideLoading() {
+                document.getElementById('loading').style.display = 'none';
+            }
+        };
+
+        // Editor Functions
+        async function improveGrammar() {
+            const text = document.getElementById('main-editor').value;
+            const response = await writingAI.processRequest(text, 'improveGrammar');
+            showResponse(response);
+        }
+
+        async function expandContent() {
+            const text = document.getElementById('main-editor').value;
+            const response = await writingAI.processRequest(text, 'expandContent');
+            showResponse(response);
+        }
+
+        async function shortenContent() {
+            const text = document.getElementById('main-editor').value;
+            const response = await writingAI.processRequest(text, 'shortenContent');
+            showResponse(response);
+        }
+
+        async function generateIdeas() {
+            const text = document.getElementById('main-editor').value;
+            const response = await writingAI.processRequest(text, 'generateIdeas');
+            showSuggestions(response);
+        }
+
+        // UI Updates
+        function showResponse(response) {
+            const container = document.getElementById('ai-response');
+            container.innerHTML = response;
+            container.style.display = 'block';
+        }
+
+        function showSuggestions(suggestions) {
+            const container = document.getElementById('suggestions-container');
+            container.innerHTML = suggestions.map(suggestion => `
+                <div class="suggestion-item" onclick="insertSuggestion('${suggestion}')">
+                    ${suggestion}
+                </div>
+            `).join('');
+        }
+
+        function insertSuggestion(text) {
+            const editor = document.getElementById('main-editor');
+            editor.value += '\n' + text;
+        }
+    </script>
+</body>
+</html>

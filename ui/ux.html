@@ -18,33 +18,14 @@
     header {
       background-color: #111827;
       padding: 20px;
-      position: relative;
-    }
-
-    .menu-toggle {
-      display: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    nav h1 {
-      color: #ccc;
-      text-align: left;
-    
-
     }
 
     nav ul {
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      justify-content: right;
+      justify-content: center;
       gap: 20px;
-      transition: 0.3s ease;
     }
 
     nav ul li {
@@ -104,12 +85,11 @@
     }
 
     .service-info img {
-      width: 100%;
       max-width: 500px;
-      height: auto;
       border-radius: 10px;
+      background-color: aquamarine;
+      color: aqua;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      object-fit: cover;
     }
 
     .description {
@@ -133,6 +113,12 @@
       margin: 60px auto;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #111827;
     }
 
     input, textarea {
@@ -166,47 +152,9 @@
     }
 
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: #111827;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px 0;
-        z-index: 1000;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      .dropdownai .dropdown-menuai {
-        position: static;
-        background: #1a202c;
-        margin-top: 10px;
-        display: none;
-      }
-
-      .dropdownai:hover .dropdown-menuai {
-        display: none;
-      }
-
-      .dropdownai.active .dropdown-menuai {
-        display: block;
-      }
-
       .service-info {
         flex-direction: column;
-      }
-
-      .service-info img {
-        height: 300px;
+        align-items: flex-start;
       }
     }
   </style>
@@ -214,16 +162,12 @@
 <body>
 
 <header>
-  <div class="menu-toggle">☰</div>
   <nav>
-    <h1>DANGOL AI</h1>
-
     <ul>
-      
       <li><a href="index.html">Home</a></li>
 
       <li class="dropdownai">
-        <a href="website.html">Web Development ▼</a>
+        <a href="website.html">UI/UX Web Development ▼</a>
         <ul class="dropdown-menuai">
           <li><a href="website.html">Custom Websites</a></li>
           <li><a href="website.html">Business Websites</a></li>
@@ -231,7 +175,7 @@
       </li>
 
       <li class="dropdownai">
-        <a href="#">App Development ▼</a>
+        <a href="#">UI/UX App Development ▼</a>
         <ul class="dropdown-menuai">
           <li><a href="mobile.html">Mobile App</a></li>
           <li><a href="ios.html">iOS App</a></li>
@@ -240,6 +184,7 @@
 
       <li><a href="about.html">About Us</a></li>
       <li><a href="contactus.html">Contact Us</a></li>
+
       <li><a href="software.html">Software</a></li>
     </ul>
   </nav>
@@ -247,7 +192,7 @@
 
 <!-- SOFTWARE SECTION -->
 <section class="section" id="software">
-  <h2>Software, Web & App Development</h2>
+  <h2>UI/UX Web & App Development</h2>
   <div class="service-info">
     <img src="software.png" alt="Software Solutions" />
     <div class="description">
@@ -275,37 +220,6 @@
 <footer>
   &copy; 2025 DANGOL AI — Crafted with ❤️ in Nepal
 </footer>
-
-<script>
-  // Mobile Menu Toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('nav ul');
-  const dropdowns = document.querySelectorAll('.dropdownai');
-
-  menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav') && !e.target.matches('.menu-toggle')) {
-      navMenu.classList.remove('active');
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  });
-
-  // Dropdown handling for mobile
-  dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        dropdown.classList.toggle('active');
-      }
-    });
-  });
-</script>
 
 </body>
 </html>

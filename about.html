@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | DANGOL AI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #111827;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #2563eb;
+      border-radius: 8px;
+    }
+
+    .dropdownai .dropdown-menuai {
+      display: none;
+      position: absolute;
+      top: 45px;
+      left: 0;
+      background-color: #1f2937;
+      min-width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+
+    .dropdownai:hover .dropdown-menuai {
+      display: block;
+    }
+
+    .dropdown-menuai li a {
+      padding: 10px 15px;
+      white-space: nowrap;
+    }
+
+    .header {
+      background: linear-gradient(to right, #1f2937, #3b82f6);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.8em;
+      margin-bottom: 15px;
+    }
+
+    .header p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .content {
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    .dev-section {
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(to right, #f8fafc, #e0f2fe);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.dev-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.dev-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.dev-photo:hover {
+  transform: scale(1.05);
+}
+
+.dev-info {
+  flex: 1;
+}
+
+.dev-info h2 {
+  font-size: 1.8em;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.dev-info p {
+  font-size: 1.05em;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Mobile-friendly tweaks */
+@media (max-width: 768px) {
+  .dev-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .dev-info h2 {
+    font-size: 1.5em;
+  }
+
+  .dev-info p {
+    font-size: 1em;
+  }
+}
+
+
+
+    h2 {
+      color: #111827;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #111827;
+      color: white;
+      margin-top: 50px;
+    }
+
+    /* Responsive Design */
+    @media(max-width: 768px) {
+      .nav-toggle {
+        display: block;
+        text-align: right;
+        margin-bottom: 10px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .dropdownai:hover .dropdown-menuai {
+        display: none;
+      }
+
+      .dropdownai.active .dropdown-menuai {
+        display: block;
+        position: relative;
+        top: 0;
+        width: 100%;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-toggle" onclick="toggleMenu()">☰ Menu</div>
+  <nav>
+    <ul id="mainNav">
+      <li><a href="index.html">Home</a></li>
+
+      <li class="dropdownai">
+        <a href="#" onclick="toggleDropdown(event)">Web Development ▼</a>
+        <ul class="dropdown-menuai">
+          <li><a href="Custom Websites.html">Custom Websites</a></li>
+          <li><a href="Business Websites.html">Business Websites</a></li>
+          <li><a href="Portfolio Websites.html">Portfolio Websites</a></li>
+          <li><a href="Corporate Websites.html">Corporate Websites</a></li>
+          <li><a href="E-Commerce Websites.html">E-Commerce Websites</a></li>
+          <li><a href="SEO-Friendly Websites.html">SEO-Friendly Websites</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdownai">
+        <a href="#" onclick="toggleDropdown(event)">App Development ▼</a>
+        <ul class="dropdown-menuai">
+          <li><a href="mobile.html">Mobile App Development</a></li>
+          <li><a href="android.html">Android App Development</a></li>
+          <li><a href="Android UI/UX Design.html">Android UI/UX Design</a></li>
+          <li><a href="ios.html">iOS App Development</a></li>
+          <li><a href="flutter.html">Flutter Development</a></li>
+          <li><a href="web.html">Web App Development</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdownai">
+        <a href="#" onclick="toggleDropdown(event)">Services ▼</a>
+        <ul class="dropdown-menuai">
+          <li><a href="website.html">Website Design & Development</a></li>
+          <li><a href="android.html">Android App Development</a></li>
+          <li><a href="ios.html">iOS App Development</a></li>
+          <li><a href="UI/UX Design.html">UI/UX Design</a></li>
+          <li><a href="ecommerce.html">Digital Marketing</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="Custom AI Solutions.html">Custom AI Solutions</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdownai">
+        <a href="#" onclick="toggleDropdown(event)">Digital Marketing ▼</a>
+        <ul class="dropdown-menuai">
+          <li><a href="SEO Services.html">SEO Services</a></li>
+          <li><a href="Social Media Marketing.html">Social Media Marketing</a></li>
+          <li><a href="Content Strategy.html">Content Strategy</a></li>
+          <li><a href="Pay-Per-Click.html">Pay-Per-Click Campaigns</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdownai">
+        <a href="#" onclick="toggleDropdown(event)">E-Commerce Solutions ▼</a>
+        <ul class="dropdown-menuai">
+          <li><a href="Custom E-Commerce Websites.html">Custom E-Commerce Website</a></li>
+          <li><a href="E-Commerce Mobile App Development.html">E-Commerce Mobile App</a></li>
+          <li><a href="Full E-Commerce Website Development.html">Full E-Commerce Website</a></li>
+          <li><a href="Shopify Development.html">Shopify Development</a></li>
+        </ul>
+      </li>
+
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="header">
+  <h1>About DANGOL AI</h1>
+  <p>Where Innovation Meets Simplicity — Websites, Apps, Software & Custom AI Solutions</p>
+</div>
+
+<div class="content">
+  <h2>Who We Are</h2>
+  <p><strong>DANGOL AI</strong> is a creative technology company based in Nepal. We empower businesses, startups, and entrepreneurs through beautifully designed websites, powerful mobile apps, and intelligent AI-powered software solutions.</p>
+
+  <h2>Our Core Expertise</h2>
+  <ul>
+    <li>Modern & SEO-Friendly Website Design</li>
+    <li>Android & iOS App Development</li>
+    <li>Custom Software & AI Tools</li>
+    <li>Full-Stack Development Services</li>
+    <li>Digital Marketing & Branding</li>
+  </ul>
+
+  <h2>Our Vision</h2>
+  <p>We dream of a world where every idea has a digital form — whether it's a local startup or a global business. Our vision is to become the top provider of smart, scalable, and affordable tech solutions in Nepal and worldwide.</p>
+
+  <h2>Why DANGOL AI?</h2>
+  <ul>
+    <li>Creative minds with technical mastery</li>
+    <li>All-in-one service hub: Web, Mobile & AI</li>
+    <li>Affordable pricing, premium quality</li>
+    <li>Lifetime support and smooth updates</li>
+    <li>Client-focused, success-driven</li>
+  </ul>
+
+  <div class="dev-section">
+    <div class="dev-card">
+      <a href="https://raman1224.github.io/ramandangol/"><img src="ram.jpg" alt="DANGOL AI Developer" class="dev-photo"></a>
+      <div class="dev-info">
+        <h2>Developer of DANGOL AI</h2>
+        <p>Hi! I'm the creative mind behind DANGOL AI — passionate about building powerful, user-friendly websites, apps, and custom AI tools. Let's turn your vision into innovation.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<footer>
+  Developed with ❤️ by <strong>DANGOL AI</strong> | Your Trusted Tech Partner
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mainNav').classList.toggle('show');
+  }
+
+  function toggleDropdown(event) {
+    event.preventDefault();
+    const parent = event.target.closest('.dropdownai');
+    parent.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>

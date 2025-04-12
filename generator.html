@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANGOL AI Image Generator</title>
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #6c5ce7;
+            --accent: #a66efa;
+            --background: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .generator-box {
+            background: #2d2d2d;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #promptInput {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #3d3d3d;
+            border-radius: 8px;
+            background: #1e1e1e;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        #generateBtn {
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #generateBtn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .image-card {
+            background: #262626;
+            border-radius: 12px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .generated-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .loading::after {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Image Generator</h1>
+            <p>Transform text into stunning images using Stable Diffusion</p>
+        </div>
+
+        <div class="generator-box">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="promptInput"
+                    placeholder="Describe the image you want to generate..."
+                >
+                <button id="generateBtn" onclick="generateImage()">
+                    Generate Image
+                </button>
+            </div>
+
+            <div class="gallery" id="gallery">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_KEY = 'YOUR_STABLE_DIFFUSION_API_KEY';
+        const API_URL = 'https://api.stability.ai/v1/generation/stable-diffusion-v1-6/text-to-image';
+
+        async function generateImage() {
+            const prompt = document.getElementById('promptInput').value.trim();
+            const gallery = document.getElementById('gallery');
+
+            if (!prompt) {
+                alert('Please enter a description');
+                return;
+            }
+
+            // Create loading card
+            const loadingCard = document.createElement('div');
+            loadingCard.className = 'image-card';
+            loadingCard.innerHTML = `
+                <div class="loading">
+                    Generating...
+                </div>
+            `;
+            gallery.prepend(loadingCard);
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text_prompts: [{ text: prompt }],
+                        cfg_scale: 7,
+                        height: 512,
+                        width: 512,
+                        steps: 30,
+                        samples: 1
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.artifacts && data.artifacts.length > 0) {
+                    const imageUrl = `data:image/png;base64,${data.artifacts[0].base64}`;
+                    
+                    const imageCard = document.createElement('div');
+                    imageCard.className = 'image-card';
+                    imageCard.innerHTML = `
+                        <img 
+                            src="${imageUrl}" 
+                            class="generated-image" 
+                            alt="Generated image"
+                        >
+                    `;
+                    
+                    gallery.prepend(imageCard);
+                } else {
+                    throw new Error('No image generated');
+                }
+
+            } catch (error) {
+                console.error('Generation error:', error);
+                alert('Error generating image. Please try again.');
+            } finally {
+                gallery.removeChild(loadingCard);
+            }
+        }
+
+        // Handle Enter key
+        document.getElementById('promptInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') generateImage();
+        });
+    </script>
+</body>
+</html>

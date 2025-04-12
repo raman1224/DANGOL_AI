@@ -8,96 +8,73 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
         body { background-color: #f4f4f4; }
-        header { background: #002244; color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; }
+        header { background: linear-gradient(to right, #1f2937, #3b82f6); color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: relative; }
         .logo { font-size: 22px; font-weight: bold; }
         nav ul { list-style: none; display: flex; }
         nav ul li { margin: 0 15px; position: relative; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; }
         nav ul li:hover .dropdown { display: block; }
-        .dropdown { display: none; position: absolute; background: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); top: 30px; left: 0; min-width: 180px; }
+        .dropdown { display: none; position: absolute; background: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); top: 30px; left: 0; min-width: 180px; z-index: 1; }
         .dropdown a { display: block; padding: 10px; color: #002244; }
         .dropdown a:hover { background: #ddd; }
-        .dashboard { text-align: center; padding: 40px; }
-        .cards { display: flex; justify-content: center; gap: 20px; height: 500px; width: 100%; border-radius: 7px; margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px; }
-        .card { background: white; padding: 20px; width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  margin-top: 5px; height: 430px; width: 31%; margin-bottom: 10px;}
-        .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
-        .footer { background: #141516; height: 100px; color: white;  margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
-        /* Bottom section: Left and Right Alignment */
-  .footer-bottomai {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: #111;
-    margin-top: 20px;
-  }
-  
-  .footer-leftai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .logo-containerai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .footer-logoai {
-    width: 150px;
-    height: 150px;
-    border-radius: 1080px;
-    margin-right: 10px;
-  }
-  
-  .footer-rightai {
-    text-align: right;
-    max-width: 50%;
-  }
-  
-  .footer-rightai p {
-    color: #ccc;
-  }
-  
-  .footer-rightai strong {
-    color: #ff6600;
-  }
-  
-  .footer-rightai a {
-    color: #ff6600;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  .footer-rightai a:hover {
-    text-decoration: underline;
-  }
- 
+        .dashboard { text-align: center; padding: 20px; }
+        .cards { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+        .card { background: white; padding: 15px; width: 31%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 10px 0; min-width: 300px; }
+        .card img { height: 350px; width: 100%; border-radius: 7px; object-fit: cover; }
+        .footer { background: #141516; color: white; margin-top: 20px; padding: 20px; }
+        .footer-bottomai { display: flex; justify-content: space-between; padding: 20px 50px; background-color: #111; }
+        .footer-leftai { display: flex; align-items: center; }
+        .footer-logoai { width: 150px; height: 150px; border-radius: 50%; margin-right: 10px; }
 
-  
+        .footer-rightai { text-align: right; max-width: 100%; width: 100%; }
+        .footer-rightai p { color: #ccc; }
+        .footer-rightai strong { color: #ff6600; }
+        .footer-rightai a { color: #ff6600; text-decoration: none; transition: 0.3s; }
+        .footer-rightai a:hover { text-decoration: underline; }
+        .footer-rightai { max-width: 50%; }
+        .menu-toggle { display: none; cursor: pointer; font-size: 24px; }
 
-   /* Responsive Design */
-   /* @media (max-width: 768px) {
-            header { flex-direction: column; align-items: flex-start; }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            header { padding: 15px; }
             .menu-toggle { display: block; }
-            nav ul { display: none; flex-direction: column; width: 100%; background: #002244; padding: 10px; }
-            nav ul li { text-align: left; margin: 5px 0; }
-            nav ul.show { display: flex; }
-            .cards { flex-direction: column; align-items: center; margin-top: 40px; margin-bottom: 30px;  }
-            .card { flex-direction: column; align-items: center; margin-top: 100px; width: 100%; height: 300px; margin-bottom: 100px;
+            nav ul { 
+                display: none; 
+                flex-direction: column; 
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #002244;
+                padding: 0;
+                margin: 0;
             }
-            .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
-
-            .footer-bottomai { flex-direction: column; text-align: center; }
+            nav ul.show { display: flex; }
+            nav ul li { margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            nav ul li a { padding: 15px; display: block; }
+            .dropdown { position: static; background: #001933; box-shadow: none; }
+            .dropdown a { color: white; padding: 10px 25px; }
+            
+            .card { width: 100%; margin: 10px 0; }
+            .card img { height: 250px; }
+            
+            .footer-bottomai { flex-direction: column; padding: 20px; text-align: center; }
+            .footer-leftai { flex-direction: column; margin-bottom: 20px; }
+            .footer-logoai { width: 100px; height: 100px; margin: 0 auto 10px; }
+            .footer-rightai { max-width: 100%; text-align: center; }
             .footer-rightai { max-width: 100%; }
-        } */
 
-  
+            .footer div { width: 100%; margin: 15px 0; }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">🌎 DANGOL AI</div>
         <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li>
@@ -111,29 +88,27 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.htmls">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <div class="dashboard">
         <h2>Flutter Development</h2>
         <div class="cards">
             <div class="card">
                 <h3>Frontend Development</h3>
-                <img src="flutter.png" alt="Frontend Development" >
-
+                <img src="flutter.png" alt="Frontend Development">
                 <p>HTML, CSS, JavaScript, React, Angular.</p>
             </div>
             <div class="card">
                 <h3>Backend Development</h3>
-                <img src="flutter.png" alt="Backend Development" >
-
+                <img src="flutter.png" alt="Backend Development">
                 <p>Node.js, Django, PHP, Databases.</p>
             </div>
             <div class="card">
                 <h3>Full Stack Development</h3>
-                <img src="flutter.png" alt="Full Stack Development" >
-
+                <img src="flutter.png" alt="Full Stack Development">
                 <p>Combination of Frontend & Backend.</p>
             </div>
         </div>
@@ -141,13 +116,12 @@
         <div class="cards">
             <div class="card">
                 <h3>E-Commerce Websites</h3>
-                <img src="flutter.png" alt="eCommerce website" >
-
+                <img src="flutter.png" alt="eCommerce website">
                 <p>HTML, CSS, JavaScript, React, Angular.</p>
             </div>
             <div class="card">
                 <h3>Portfolio Websites</h3>
-                <img src="flutter.png" alt="portfolio website" >
+                <img src="flutter.png" alt="portfolio website">
                 <p>Node.js, Django, PHP, Databases.</p>
             </div>
             <div class="card">
@@ -158,40 +132,44 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
     <footer class="footer">
         <div class="footer-bottomai">
             <div class="footer-leftai">
-              <div class="logo-containerai">
-                <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
-                <p>DANGOL AI</p>
-              </div>
+                <div class="logo-containerai">
+                    <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
+                    <p>DANGOL AI</p>
+                </div>
             </div>
             <div class="footer-rightai">
-              <p><strong>DANGOL AI Creation</strong></p>
-              <p>We create anything with Web designing and app designing tools! Whether it's developing intelligent chatbots, building AI-driven apps, or automating your business processes, DANGOL AI is here to help you innovate and transform the world.</p>
-
-
-              <p>Explore our AI tools to unlock endless possibilities!</p>
+                <p><strong>DANGOL AI Creation</strong></p>
+                <p>We empower you to create  WebSites, Application, either an  AI tools!</p>
+                <p>DANGOL AI is here to help you innovate and transform the world.</p>
             </div>
-          </div>
-        <div>
-            <h4>Resources</h4>
-            <p><a href="#" style="color:white; text-decoration:none;">Documentation</a></p>
-            <p><a href="#" style="color:white; text-decoration:none;">Developer Center</a></p>
         </div>
-        <div>
-            <h4>Contact</h4>
-            <p>Email: support@dangolai.com</p>
-        </div>
+        
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && !event.target.closest('.menu-toggle')) {
+                document.querySelector('nav ul').classList.remove('show');
+            }
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.matches('nav ul li a')) {
+                document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

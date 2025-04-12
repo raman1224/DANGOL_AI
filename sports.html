@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sports - DANGOL AI</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #00ffcc;
+    }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #222;
+    }
+    .mobile-nav a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    /* Main Sports Content */
+    .sports-section {
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .sport-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .sport-box img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .sport-box h1 {
+      margin: 15px 0 10px;
+      font-size: 22px;
+      color: #333;
+    }
+    .sport-box p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    /* Contact Us Section */
+    .contact-section {
+      background: #f0f0f0;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .contact-section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #222;
+    }
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .contact-form button {
+      background: #333;
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #00cc99;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      .mobile-nav {
+        display: none;
+      }
+      .mobile-nav.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">DANGOL AI</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contactus.html">Contact Us</a>
+      <a href="#">You</a>
+    </nav>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contactus.html">Contact Us</a>
+    <a href="#">You</a>
+  </div>
+
+  <!-- Main Sports Section -->
+  <section class="sports-section">
+    <div class="sport-box">
+      <img src="cricket.jpg" alt="Cricket">
+      <h1>Cricket</h1>
+      <p>Cricket is a globally popular sport known for its thrilling matches, powerful batting, and intense bowling action. this kind of live providing websites are we can create.</p>
+    </div>
+    <div class="sport-box">
+      <img src="football.png" alt="Football">
+      <h1>Football</h1>
+      <p>Football is the world’s most popular game, so pros for you to demand a amazing mindset websites to live produces web order. </p>
+    </div>
+    <div class="sport-box">
+      <img src="volly.png" alt="Volleyball">
+      <h1>Volleyball</h1>
+      <p>Volleyball is a dynamic team sport requiring agility and coordination. It’s widely played both indoors and on the beach, loved for its energetic play. that's why this kind of website are few in google so benefit for you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+    <form class="contact-form" action="mailto:dangolrapper@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Developed by DANGOL AI
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

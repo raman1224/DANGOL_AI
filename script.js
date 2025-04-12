@@ -1,3 +1,31 @@
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("active");
+  }
+
+  // Optional: close dropdown when clicking outside
+  window.addEventListener("click", function (e) {
+    const menu = document.getElementById("menu");
+    const burger = document.querySelector(".hamburgernew");
+
+    if (!menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const faqItems = document.querySelectorAll(".faq-item");
 

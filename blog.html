@@ -3,200 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DANGOL AI Dashboard</title>
+    <title>DANGOL AI Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { background-color: #f4f4f4; }
-        header { background: #002244; color: white; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 22px; font-weight: bold; }
-        nav ul { list-style: none; display: flex; }
-        nav ul li { margin: 0 15px; position: relative; }
-        nav ul li a { color: white; text-decoration: none; font-weight: bold; }
-        nav ul li:hover .dropdown { display: block; }
-        .dropdown { display: none; position: absolute; background: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); top: 30px; left: 0; min-width: 180px; }
-        .dropdown a { display: block; padding: 10px; color: #002244; }
-        .dropdown a:hover { background: #ddd; }
-        .dashboard { text-align: center; padding: 40px; }
-        .cards { display: flex; justify-content: center; gap: 20px; height: 500px; width: 100%; border-radius: 7px; margin-top: 20px; margin-bottom: 20px; margin-left: 10px; margin-right: 10px; }
-        .card { background: white; padding: 20px; width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  margin-top: 5px; height: 430px; width: 31%; margin-bottom: 10px;}
-        .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
-        .footer { background: #141516; height: 100px; color: white;  margin-top: 20px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; }
-        /* Bottom section: Left and Right Alignment */
-  .footer-bottomai {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: #111;
-    margin-top: 20px;
-  }
-  
-  .footer-leftai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .logo-containerai {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-leftai .footer-logoai {
-    width: 150px;
-    height: 150px;
-    border-radius: 1080px;
-    margin-right: 10px;
-  }
-  
-  .footer-rightai {
-    text-align: right;
-    max-width: 50%;
-  }
-  
-  .footer-rightai p {
-    color: #ccc;
-  }
-  
-  .footer-rightai strong {
-    color: #ff6600;
-  }
-  
-  .footer-rightai a {
-    color: #ff6600;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
-  .footer-rightai a:hover {
-    text-decoration: underline;
-  }
- 
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: Arial, sans-serif; 
+        }
+        
+        body { 
+            background-color: #f4f4f4; 
+            line-height: 1.6; 
+        }
 
-  
+        header { 
+            background: #002244; 
+            color: white; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: relative;
+        }
 
-   /* Responsive Design */
-   /* @media (max-width: 768px) {
-            header { flex-direction: column; align-items: flex-start; }
-            .menu-toggle { display: block; }
-            nav ul { display: none; flex-direction: column; width: 100%; background: #002244; padding: 10px; }
-            nav ul li { text-align: left; margin: 5px 0; }
-            nav ul.show { display: flex; }
-            .cards { flex-direction: column; align-items: center; margin-top: 40px; margin-bottom: 30px;  }
-            .card { flex-direction: column; align-items: center; margin-top: 100px; width: 100%; height: 300px; margin-bottom: 100px;
+        .logo { 
+            font-size: 22px; 
+            font-weight: bold; 
+            z-index: 1001;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li { 
+            margin: 0 15px; 
+            position: relative; 
+        }
+
+        nav ul li a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            padding: 10px 0;
+        }
+
+        .dropdown { 
+            display: none; 
+            position: absolute; 
+            background: white; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            top: 100%; 
+            left: 0; 
+            min-width: 180px; 
+            z-index: 1000;
+        }
+
+        .dropdown a { 
+            display: block; 
+            padding: 10px; 
+            color: #002244; 
+        }
+
+        .dashboard { 
+            padding: 40px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin: 30px 0; 
+        }
+
+        .card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 7px; 
+            margin-bottom: 15px;
+        }
+
+        .footer { 
+            background: #141516; 
+            color: white; 
+            padding: 40px 20px; 
+            margin-top: 50px; 
+        }
+
+        .footer-bottomai { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .logo-containerai img {
+width: 200px;
+height: 200px;
+border-radius: 900px;
+        }
+
+        .footer-leftai { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+        }
+
+        .footer-logoai { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+        }
+
+        .footer-rightai { 
+            text-align: left; 
+        }
+
+        @media (max-width: 768px) { 
+            .menu-toggle { 
+                display: block; 
             }
-            .card img { height: 350px; width: 100%; min-width: 90%; display: flex; flex-direction: column; border-radius: 7px; padding: 20px;}
 
-            .footer-bottomai { flex-direction: column; text-align: center; }
-            .footer-rightai { max-width: 100%; }
-        } */
+            nav ul { 
+                position: fixed; 
+                top: 0; 
+                right: -100%; 
+                height: 100vh; 
+                width: 70%; 
+                background: #002244; 
+                flex-direction: column; 
+                padding: 80px 30px 30px; 
+                transition: right 0.3s ease; 
+            }
 
-  
+            nav ul.active { 
+                right: 0; 
+            }
+
+            nav ul li { 
+                margin: 10px 0; 
+            }
+
+            .logo-containerai img {
+width: 100px;
+height: 100px;
+border-radius: 900px;
+        }
+
+            .dropdown { 
+                position: static; 
+                display: none; 
+                background: rgba(255,255,255,0.1); 
+                margin-top: 10px; 
+            }
+
+            .footer-leftai { 
+                flex-direction: column; 
+                text-align: left; 
+            }
+
+            .footer-rightai { 
+                text-align: center; 
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">🌎 DANGOL AI</div>
+        <button class="menu-toggle" aria-label="Menu">☰</button>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li>
                     <a href="https://globalgkwww.blogspot.com">Blog</a>
                     <div class="dropdown">
-                        <a href="Social Media Marketing .html">Social Media  </a>
-                        <a href="Content Strategy.html">Content </a>
+                        <a href="Social Media Marketing .html">Social Media</a>
+                        <a href="Content Strategy.html">Content</a>
                         <a href="Pay-Per-Click Campaigns.html">Daily life</a>
                     </div>
                 </li>
-                <li><a href="services.html">services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.htmls">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-
-
-
-        
-
     </header>
+
     <div class="dashboard">
         <h2>Blog</h2>
         <div class="cards">
             <div class="card">
-                <h3>Education Blog </h3>
-                <img src="laptop.png" alt="Education" >
-
-                <p>Education blog this this .</p>
+                <h3>Education Blog</h3>
+                <img src="edu.jpg" alt="Education">
+                <p>Education blog content and insights.</p>
             </div>
             <div class="card">
                 <h3>Gym Blog</h3>
-                <img src="laptop.png" alt="gym blog" >
-
-                <p> at 5 am to 6 am gym time..</p>
+                <img src="gym.jpg" alt="Gym blog">
+                <p>5 AM to 6 AM gym routines and tips.</p>
             </div>
             <div class="card">
-                <h3>Games </h3>
-                <img src="laptop.png" alt="games" >
-
-                <p>volleyball.</p>
+                <h3>Games</h3>
+               <a href="sport.html"> <img src="games.jpg"alt="Games" ></a>
+                <p>Volleyball strategies and updates.</p>
             </div>
         </div>
-
-        <!-- <div class="cards">
-            <div class="card">
-                <h3>E-Commerce Websites</h3>
-                <img src="laptop.png" alt="eCommerce website" >
-
-                <p>HTML, CSS, JavaScript, React, Angular.</p>
-            </div>
-            <div class="card">
-                <h3>Portfolio Websites</h3>
-                <img src="laptop.png" alt="portfolio website" >
-                <p>Node.js, Django, PHP, Databases.</p>
-            </div>
-            <div class="card">
-                <h3>Business Websites</h3>
-                <img src="laptop.png" alt="business website">
-                <p>Combination of Frontend & Backend.</p>
-            </div>
-        </div> -->
     </div>
-
-
-
-
-
-
-
-
-
 
     <footer class="footer">
         <div class="footer-bottomai">
             <div class="footer-leftai">
-              <div class="logo-containerai">
-                <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
-                <p>DANGOL AI</p>
-              </div>
+                <div class="logo-containerai">
+                    <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai" >
+                    <p>DANGOL AI</p>
+                </div>
             </div>
             <div class="footer-rightai">
-              <p><strong>DANGOL AI Creation</strong></p>
-              <p>We create anything with Web designing and app designing tools! Whether it's developing intelligent chatbots, building AI-driven apps, or automating your business processes, DANGOL AI is here to help you innovate and transform the world.</p>
-
-
-              <p>Explore our AI tools to unlock endless possibilities!</p>
+                <p><strong>DANGOL AI Creation</strong></p>
+                <p>We empower you to create  WebSites, Application, either an  AI tools!</p>
+                <p>DANGOL AI is here to help you innovate and transform the world.</p>
             </div>
-          </div>
-        <div>
-            <h4>Resources</h4>
-            <p><a href="#" style="color:white; text-decoration:none;">Documentation</a></p>
-            <p><a href="#" style="color:white; text-decoration:none;">Developer Center</a></p>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <p>Email: support@dangolai.com</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile navigation
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav ul');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            body.classList.toggle('no-scroll');
+        });
+
+        // Close menu on click outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+                nav.classList.remove('active');
+                body.classList.remove('no-scroll');
+            }
+        });
+
+        // Mobile dropdown handling
+        document.querySelectorAll('nav li').forEach(item => {
+            if (window.innerWidth <= 768) {
+                item.addEventListener('click', (e) => {
+                    const dropdown = item.querySelector('.dropdown');
+                    if (dropdown) {
+                        e.preventDefault();
+                        dropdown.style.display = 
+                            dropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            }
+        });
+
+        // Image lazy loading
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const image = entry.target;
+                    image.src = image.dataset.src;
+                    imageObserver.unobserve(image);
+                }
+            });
+        });
+
+        lazyImages.forEach(image => {
+            imageObserver.observe(image);
+        });
+    </script>
 </body>
 </html>

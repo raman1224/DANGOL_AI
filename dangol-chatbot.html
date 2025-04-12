@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DANGOL Chatbot</title>
+    <style>
+        /* Topbar Menu Styling */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            align-items: center;
+        }
+
+        .topbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .topbar .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .topbar .menu li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .topbar .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .topbar .menu li:hover .dropdown-content {
+            display: block;
+        }
+
+
+        .menu a:hover {
+            background-color: rgb(49, 75, 75);
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+        
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111827;
+      color: white;
+      margin-top: 50px;
+    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topbar .menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .topbar .menu li {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .topbar .menu li a {
+                padding: 10px;
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+            }
+        }
+
+        /* Chatbot Styling */
+        .chatbot-containernew {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .chat-outputnew {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #3498db;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #ecf0f1;
+            margin-right: auto;
+        }
+
+        .typing-indicator {
+            color: #888;
+            font-style: italic;
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Topbar Menu -->
+    <div class="topbar">
+        <div class="logo">DANGOL AI</div>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="writer.html">Writing Assistant</a></li>
+            <li><a href="translator.html">Translator AI</a></li>
+
+            <li><a href="generator.html">Generator AI</a></li>
+
+           
+        </ul>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div class="chatbot-containernew">
+        <h1>DANGOL Chatbot</h1>
+        <div class="chat-outputnew" id="chat-output"></div>
+        <textarea id="chat-input" placeholder="Ask a Any questions..." rows="3"></textarea>
+        <button onclick="sendMessage()">Ask Chatbot</button>
+    </div>
+
+    <footer>
+        &copy; 2025 DANGOL AI — Crafted with ❤️ in Nepal
+      </footer>
+
+    <script>
+        const qaPairs = {
+            "capital of france": "The capital of France is Paris.",
+            "who is the president of usa": "As of my last update in July 2024, the president of the United States is Joe Biden.",
+            "largest planet": "The largest planet in our solar system is Jupiter.",
+            "founder of microsoft": "Microsoft was founded by Bill Gates and Paul Allen.",
+            "current population of world": "As of 2024, the world population is approximately 8.1 billion."
+        };
+
+        function appendMessage(message, isUser = false) {
+            const chatOutput = document.getElementById('chat-output');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = message;
+            chatOutput.appendChild(messageDiv);
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }
+
+        function getAnswer(question) {
+            const normalizedQuestion = question.toLowerCase().trim();
+            return qaPairs[normalizedQuestion];
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chat-input');
+            const chatOutput = document.getElementById('chat-output');
+            const question = inputField.value.trim();
+            
+            if (!question) return;
+
+            // Add user message
+            appendMessage(question, true);
+
+            // Show typing indicator
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.textContent = 'Dangol is typing...';
+            chatOutput.appendChild(indicator);
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+
+            setTimeout(() => {
+                // Remove typing indicator
+                chatOutput.removeChild(indicator);
+                
+                // Get and display answer if exists
+                const answer = getAnswer(question);
+                if (answer) {
+                    appendMessage(answer);
+                }
+            }, 1000);
+
+            inputField.value = '';
+        }
+
+        // Enter key handling
+        document.getElementById('chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANGOL AI Platform</title>
+    <style>
+        /* ========== Topbar Styles ========== */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            align-items: center;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .topbar .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .topbar .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .topbar .menu li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .topbar .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: background 0.3s;
+        }
+
+        /* ========== Dropdown Styles ========== */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .topbar .menu li:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* ========== Chatbot Styles ========== */
+        #chatButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        #chatContainer {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            display: none;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .chat-visible {
+            display: flex !important;
+        }
+
+        #chatHeader {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #minimizeBtn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #chatMessages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #e9ecef;
+            color: black;
+        }
+
+        #chatInput {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+
+        #userInput {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #sendBtn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* ========== Footer Styles ========== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111827;
+            color: white;
+            margin-top: 50px;
+        }
+
+        /* ========== Responsive Design ========== */
+        @media (max-width: 768px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .topbar .menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .topbar .menu li {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .topbar .menu li a {
+                padding: 10px;
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                width: 100%;
+            }
+
+            #chatContainer {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+
+        
+        /* Chatbot Styling */
+        .chatbot-containernew {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .chat-outputnew {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+        }
+
+
+        
+        /* Chatbot Styling */
+        .chatbot-containernew {
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .chat-outputnew {
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #3498db;
+            color: white;
+            margin-left: auto;
+        }
+
+        .bot-message {
+            background: #ecf0f1;
+            margin-right: auto;
+        }
+
+        .typing-indicator {
+            color: #888;
+            font-style: italic;
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <div class="topbar">
+        <div class="logo">DANGOL AI</div>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="writer.html">Writing Assistant</a></li>
+            <li><a href="translator.html">Translator AI</a></li>
+            <li><a href="generator.html">Generator AI</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <main style="min-height: 80vh; padding: 20px;">
+        <!-- Your page content goes here -->
+        <h1>Welcome to DANGOL AI Platform</h1>
+        <p>Explore our AI-powered solutions for your needs</p>
+    </main>
+
+      <!-- Chatbot Section -->
+      <div class="chatbot-containernew">
+        <h1>DANGOL Chatbot</h1>
+        <div class="chat-outputnew" id="chat-output"></div>
+        <textarea id="chat-input" placeholder="Ask a Any questions..." rows="3"></textarea>
+        <button onclick="sendMessage()">Ask Chatbot</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 DANGOL AI — Crafted with ❤️ in Nepal
+    </footer>
+
+    <!-- Chatbot Components -->
+    <button id="chatButton" onclick="toggleChat()">💬</button>
+    <div id="chatContainer">
+        <div id="chatHeader">
+            <span>DANGOL Assistant</span>
+            <button id="minimizeBtn" onclick="toggleChat()">−</button>
+        </div>
+        <div id="chatMessages"></div>
+        <div id="chatInput">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot Toggle Functionality
+        function toggleChat() {
+            const chatContainer = document.getElementById('chatContainer');
+            const chatButton = document.getElementById('chatButton');
+            chatContainer.classList.toggle('chat-visible');
+            chatButton.style.display = chatContainer.classList.contains('chat-visible') ? 'none' : 'block';
+        }
+
+        // Message Handling System
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            displayMessage(message, 'user');
+            
+            // Show typing indicator
+            const chatMessages = document.getElementById('chatMessages');
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.textContent = 'Dangol is typing...';
+            chatMessages.appendChild(indicator);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                chatMessages.removeChild(indicator);
+                const response = generateResponse(message);
+                displayMessage(response, 'bot');
+            }, 1000);
+
+            userInput.value = '';
+        }
+
+        // Display Messages
+        function displayMessage(message, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // AI Response Generator
+        function generateResponse(userMessage) {
+            const responses = [
+                { pattern: /hello|hi|hey/i, response: 'Namaste! How can I assist you today?' },
+                { pattern: /about|company/i, response: 'DANGOL AI provides innovative AI solutions for content creation, translation, and automation.' },
+                { pattern: /contact|reach/i, response: 'Reach us at: support@dangol.ai or visit our Contact Us page.' },
+                { pattern: /writer|writing/i, response: 'Our AI writer helps create blog posts, essays, and professional documents.' },
+                { pattern: /translate|language/i, response: 'We support translation between 50+ languages with neural network technology.' },
+                { pattern: /generate|content/i, response: 'Try our content generator for marketing copy, social media posts, and more!' },
+                { pattern: /bye|goodbye/i, response: 'Dhanyabad! Visit us again soon.' },
+                { pattern: /help/i, response: 'I can help with: content creation, translations, document generation, and general queries.' },
+                { pattern: /time|date/i, response: `Current time in Nepal: ${new Date().toLocaleTimeString('en-NP')}` },
+            ];
+
+            userMessage = userMessage.toLowerCase();
+            const matchedResponse = responses.find(r => r.pattern.test(userMessage));
+            return matchedResponse ? matchedResponse.response : "I'm still learning! For detailed queries, please email our support team.";
+        }
+
+        // Enter Key Support
+        document.getElementById('userInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

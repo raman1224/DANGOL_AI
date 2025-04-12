@@ -20,19 +20,22 @@
       display: flex;
       justify-content: space-between;
       padding: 20px;
-      background-color: #2a2a72;
+      background-color: #1c3550;
       color: white;
       align-items: center;
     }
 
     header .logo {
       font-size: 30px;
+      text-underline-offset: #eaebeb;
     }
 
     header h1 {
       font-size: 24px;
     }
 
+
+    
     /* Form Container */
     .form-container {
       width: 100%;
@@ -164,6 +167,16 @@
       text-decoration: underline;
     }
 
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #99edfa;
+      color: rgb(12, 11, 11);
+      margin-top: 50px;
+    }
+
+    
     /* Mobile-Responsive */
     @media screen and (max-width: 600px) {
       .form-container {
@@ -184,8 +197,9 @@
 
   <!-- Logo and Global GK Text -->
   <header>
-    <div class="logo">🌎 Global GK</div>
-    <h1>Global GK</h1>
+    <a  class="logo" href="index.html">DANGOL AI</a>
+
+
   </header>
 
   <!-- Sign Up Form -->
@@ -265,7 +279,16 @@
     </form>
   </div>
 
+  
+<footer>
+  &copy; 2025 DANGOL AI — Crafted with ❤️ in Nepal
+</footer>
+
+
   <script>
+
+
+
     const signUpButton = document.getElementById('signUpButton');
     const signInButton = document.getElementById('signInButton');
     const signInForm = document.getElementById('signin');
@@ -280,6 +303,90 @@
       signInForm.style.display = "block";
       signUpForm.style.display = "none";
     });
+
+
+
+
+
+
+
+
+
+    // Form Toggle
+    document.getElementById('signUpButton').addEventListener('click', () => {
+      document.getElementById('signin').style.display = "none";
+      document.getElementById('signup').style.display = "block";
+    });
+
+    document.getElementById('signInButton').addEventListener('click', () => {
+      document.getElementById('signin').style.display = "block";
+      document.getElementById('signup').style.display = "none";
+    });
+
+    // Handle Form Submissions
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        password: e.target.password.value
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        alert(data.message || data.error);
+        if(response.ok) window.location.href = '/dashboard';
+      } catch (error) {
+        alert('Connection error');
+      }
+    });
+
+    document.getElementById('sign-in-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = {
+        email: e.target.email.value,
+        password: e.target.password.value
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/signin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        alert(data.message || data.error);
+        if(response.ok) window.location.href = '/dashboard';
+      } catch (error) {
+        alert('Connection error');
+      }
+    });
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
