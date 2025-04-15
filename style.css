@@ -747,13 +747,14 @@ gap: 35px;
 /* Main Sections */
 .main-content {
     width: 100%;
+    background-color: transparent;
 }
 
 
 
 /* Section Styling */
 .sectionexam {
-    background: linear-gradient(to right, #f7fafb, #e2eaeb); 
+    background: transparent; 
     padding: 20px;
     min-height: auto;
     margin-top: 30px;
@@ -861,6 +862,7 @@ gap: 35px;
 .news-boxexam h3,
 .news-boxexamanother h3 {
     font-size: x-large;
+    font-size: 24px;
     width: 98%;
 }
 
@@ -868,6 +870,9 @@ gap: 35px;
 .news-boxexamanother p {
     color: rgb(11, 11, 13);
     font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     height: auto;
 }
 
@@ -940,7 +945,6 @@ gap: 35px;
     .news-boxexamanother img {
         width: 90%;
         height: 500px;
-        margin-right: 3px;
         max-height: 200px;
         object-fit: cover;
         border-radius: 5px;
@@ -1896,6 +1900,30 @@ body {
     font-size: large;
     font-weight: bold;
 }
+/* Button Area Positioned Above */
+.scroll-buttons-top {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .scroll-btn {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+  }
+  
+  .scroll-btn:hover {
+    background: #555;
+  }
+  
+
 
 .scroll-item:hover {
     transform: scale(1.05);
@@ -1953,6 +1981,45 @@ body {
     .scroll-item h3 {
         font-size: 16px;
     }
+/* 
+    .scroll-buttons {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #222;
+        color: white;
+        border: none;
+        padding: 10px 14px;
+        cursor: pointer;
+        font-size: 24px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: background 0.3s;
+    }
+    
+    .scroll-btn.left {
+        left: 10px;
+    }
+    
+    .scroll-btn.right {
+        right: 10px;
+    }
+    
+    .scroll-btn:hover {
+        background: #555;
+    }
+    
+    @media (max-width: 768px) {
+        .scroll-btn {
+            display: none;
+        }
+    } */
+    
 
     .scroll-item p {
         font-size: 13px;
@@ -2739,11 +2806,9 @@ footer {
 
   
   .footer-sectionai h3 {
-    font-size: 1px;
-    margin-bottom: 10px;
+    font-size: 20px;
     margin-top: 9px;
     margin-left: 12px;
-    border-bottom: 2px solid #343232;
     padding-bottom: 5px;
   }
   

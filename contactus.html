@@ -1,63 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - DANGOL AI</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
-        .container { max-width: 500px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        input, textarea, button { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; }
-        button { background: #222; color: #fff; border: none; cursor: pointer; }
-        button:hover { background: #444; }
-        .success-message { color: green; display: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Global GK</title>
+  <style>
+    /* ======== MAIN CSS ======== */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .success {
+      color: #28a745;
+      margin-top: 15px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      background: #d4edda;
+    }
+
+    .error {
+      color: #dc3545;
+      margin-top: 15px;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      background: #f8d7da;
+    }
+
+    /* ======== FOOTER CSS ======== */
+    .footer-bottomai {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #242525;
+      margin-top: 50px;
+    }
+
+    .footer-leftai {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-leftai .logo-containerai {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-leftai .logo-containerai p a {
+      color: white;
+      height: 20px;
+      text-decoration: none;
+    }
+
+    .footer-leftai .footer-logoai {
+      width: 150px;
+      height: 150px;
+      border-radius: 380px;
+      margin-right: 10px;
+    }
+
+    .footer-rightai {
+      text-align: right;
+      max-width: 50%;
+    }
+
+    .footer-rightai p {
+      color: #ccc;
+      margin: 5px 0;
+    }
+
+    .footer-rightai strong {
+      color: #ff6600;
+    }
+
+    .footer-rightai a {
+      color: #ff6600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-rightai a:hover {
+      text-decoration: underline;
+    }
+
+    /* ======== MOBILE RESPONSIVE ======== */
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .footer-bottomai {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .footer-rightai {
+        text-align: center;
+        max-width: 100%;
+        margin-top: 15px;
+      }
+
+      .footer-leftai .footer-logoai {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      input, textarea {
+        font-size: 14px;
+      }
+
+      button {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
     <h2>Contact Us</h2>
-    <form id="contactForm">
-        <input type="text" name="name" id="name" placeholder="Your Name" required>
-        <input type="email" name="email" id="email" placeholder="Your Email" required>
-        <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
+    <form id="contactForm" method="POST">
+      <!-- FormSubmit Configuration -->
+      <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New Contact Form Submission">
+      <input type="text" name="_honey" style="display:none">
+
+
+
+      
+      <!-- Form Fields -->
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required placeholder="John Doe">
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required placeholder="john@example.com">
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" required placeholder="How can we help you?"></textarea>
+
+      <button type="submit">Send Message</button>
+      <div id="responseMessage"></div>
     </form>
-    <p id="responseMessage" class="success-message">Message sent successfully!</p>
-</div>
+  </div>
 
-<script>
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let message = document.getElementById("message").value.trim();
-    let responseMessage = document.getElementById("responseMessage");
+  <footer class="footer">
+    <div class="footer-bottomai">
+      <div class="footer-leftai">
+        <div class="logo-containerai">
+          <img src="g5.png" alt="DANGOL AI Logo" class="footer-logoai">
+          <a href="index.html"><p>DANGOL AI</p></a>
+        </div>
+      </div>
+      <div class="footer-rightai">
+        <p><strong>DANGOL AI Creation</strong></p>
+        <p>We empower you to create WebSites, Application, either an AI tools!</p>
+        <p>DANGOL AI is here to help you innovate and transform the world.</p>
+      </div>
+    </div>
+  </footer>
 
-    if (!name || !email || !message) {
-        alert("All fields are required!");
-        return;
-    }
+  <!-- JavaScript at the bottom -->
+  <script>
 
-    let formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("message", message);
-    
-    fetch("send_email.php", { method: "POST", body: formData })
-    .then(response => response.text())
-    .then(data => {
-        responseMessage.style.display = "block";
-        responseMessage.textContent = data;
-        document.getElementById("contactForm").reset();
-    })
-    .catch(error => {
-        alert("There was an error sending your message.");
-        console.error("Error:", error);
+// Replace this code in your <script> section
+  const form = document.getElementById('contactForm');
+const responseDiv = document.getElementById('responseMessage');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // Set FormSubmit endpoint
+  form.action = 'https://formsubmit.co/dangolraman843@gmail.com';
+
+  // Show loading state
+  responseDiv.textContent = "Sending message...";
+  responseDiv.className = "";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json", // Important header
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams(new FormData(form)).toString()
     });
+
+    // Check if response is JSON
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      handleResponse(data);
+    } else {
+      // Handle HTML/text response
+      const text = await response.text();
+      if (response.ok) {
+        showSuccess("Message sent successfully!");
+      } else {
+        throw new Error("Unexpected response format");
+      }
+    }
+  } catch (error) {
+    responseDiv.textContent = error.message;
+    responseDiv.className = "error";
+  }
 });
-</script>
+
+function handleResponse(data) {
+  if (data.success) {
+    showSuccess(data.message);
+  } else {
+    showError(data.error || "Failed to send message");
+  }
+}
+
+function showSuccess(message) {
+  responseDiv.textContent = message;
+  responseDiv.className = "success";
+  form.reset();
+}
+
+function showError(message) {
+  responseDiv.textContent = message;
+  responseDiv.className = "error";
+}
+
+
+
+
+
+  </script>
 
 </body>
 </html>
